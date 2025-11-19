@@ -1,19 +1,20 @@
-FROM node:18 as build-stage
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
 RUN npm run build
 
-# этап production (production stage)
-FROM nginx:stable-alpine as production-stage
+FROM nginx:stable-alpine AS runner
+
 COPY conf/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build-stage /app/dist/personal_cabinet/browser /var/cabinet/html
+
+COPY --from=build /app/dist/personal_cabinet/browser /var/cabinet/html
 
 EXPOSE 8081
 CMD ["nginx", "-g", "daemon off;"]

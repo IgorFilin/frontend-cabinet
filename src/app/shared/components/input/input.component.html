@@ -1,0 +1,13 @@
+<div class="ng-input">
+  <input
+    [type]="type"
+    [(ngModel)]="value"
+    (input)="onChangeHandler($event)"
+    (blur)="handleBlur()"
+    type="text"
+    placeholder=" "
+  />
+  <label [attr.placeholder]="placeholder">{{ placeholder }}</label>
+</div>
+<app-form-error-handler [showError]="showError" [errorMessage]="errorMessage">
+</app-form-error-handler>

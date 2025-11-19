@@ -1,0 +1,18 @@
+<div class="games">
+  @for(game of games(); track $index) {
+  <div class="games__card">
+    <div class="games__title">{{ game.title }}</div>
+    <div class="games__desc">{{ game.desc }}</div>
+    <div class="games__buttons">
+      @for(button of game.buttons; track $index) {
+      <button
+        class="games__button primary"
+        (click)="button.action()"
+      >
+        {{ button.text }}
+      </button>
+      }
+    </div>
+  </div>
+  }
+</div>

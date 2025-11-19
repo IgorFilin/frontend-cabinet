@@ -1,0 +1,25 @@
+<div class="popup">
+  <div class="popup__header">
+    <cabinet-icon
+      (iconClick)="close()"
+      id="close-small"
+      class=""
+    />
+  </div>
+  <div class="popup__content">
+    <div class="popup__textContent">
+      <div class="popup__title">{{ title() }}</div>
+      <div class="popup__description">{{ description() }}</div>
+    </div>
+    <div class="popup__btnContainer">
+      @for(button of buttons(); track $index) {
+      <button
+        class="popup__btn secondary"
+        (click)="button.action()"
+      >
+        {{ button.text }}
+      </button>
+      }
+    </div>
+  </div>
+</div>

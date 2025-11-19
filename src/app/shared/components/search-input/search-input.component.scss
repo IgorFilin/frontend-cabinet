@@ -1,0 +1,34 @@
+:host {
+  width: 100%;
+}
+.search-input {
+  position: relative;
+}
+.search-input__iconContainer {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.search-input__resultsContainer {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.search-input__item {
+  font-size: 14px;
+  background-color: var(--info-color);
+  border-radius: 15px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-input__itemTitle {
+  position: relative;
+  top: -2px;
+}

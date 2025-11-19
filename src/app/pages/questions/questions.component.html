@@ -1,0 +1,45 @@
+<form (ngSubmit)="onSubmit()" class="ng-questions" [formGroup]="questionForm">
+  <div class="ng-questions__infoText">Выберите тему для вопроса:</div>
+  <div>
+    <custom-select title="Ваш вопрос:" [values]="techologies" formControlName="theme" />
+  </div>
+  <app-markdown-textarea formControlName="question" title="Ваш вопрос:"/>
+  <app-markdown-textarea formControlName="description" title="Дополнительное описание правильного ответа (Опционально):"/>
+  <div class="ng-questions__infoText">
+    Выберите правильный вариант ответа на Ваш вопрос, и заполните поля ответа
+  </div>
+  <div class="ng-questions__variantsContainer">
+    <div class="ng-questions__textareaLabel">Вариант(ы) ответа:</div>
+    <div formArrayName="answers" class="ng-questions__variantAnswersContainer">
+      @for (answer of answersArray.value; track $index){
+        <div class="ng-questions__answerContainer" [formGroupName]="$index">
+          <div class="customCheckbox">
+            <input type="checkbox" formControlName="accept"/>
+          </div>
+          <textarea
+            id="question"
+            formControlName="value"
+            class="customTextarea"></textarea>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="ng-questions__buttonContainer">
+    <button
+      type="button"
+      class="primary"
+      (click)="onHandlerClickAddQuestions(); $event.stopPropagation()">
+      Добавить ещё ответ
+    </button>
+    <button
+      type="button"
+      *ngIf="answersArray.value.length > 1"
+      class="primary"
+      (click)="onHandlerClickRemoveQuestions()">
+      Удалить ответ
+    </button>
+    <button [disabled]="!questionForm.valid" class="primary" type="submit">
+      Создать
+    </button>
+  </div>
+</form>

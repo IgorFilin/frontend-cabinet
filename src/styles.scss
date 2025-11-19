@@ -1,0 +1,25 @@
+@use 'colors.scss' as *;
+@use 'mixins.scss' as *;
+@use 'globalStyles.scss' as *;
+@use 'buttons.scss' as *;
+@use 'ngx-toastr/toastr' as *;
+@use 'styles/inputs.scss' as *;
+@use 'styles/loaders.scss' as *;
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./assets/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'JetBrains Mono thing';
+  src: url('./assets/fonts/JetBrainsMono-Thin.ttf') format('truetype');
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

@@ -1,0 +1,32 @@
+<form class="create-article" [formGroup]="articleForm">
+  <app-input
+    placeholder="Заголовок статьи"
+    errorMessage="Обязательное поле"
+    formControlName="title"
+  />
+  <div class="create-article__addedTags">
+    <div>Выбранные теги:</div>
+    @for(tag of articleForm.get('tags')!.value; track $index) {
+      <div class="create-article__tag" @bubble>
+        <div class="create-article__tagTitle">{{ tag }}</div>
+        <cabinet-icon [id]="'close'" (iconClick)="onRemoveTag($index)"></cabinet-icon>
+      </div>
+    } @empty {
+      <div class="create-article__noAddedTag" @bubble>
+        Нет добавленных тегов
+      </div>
+    }
+  </div>
+  <app-search-input
+    [formControl]="currentTag"
+    [searchedRequest]="searchTag"
+    placeholder="Теги"
+    errorMessage="Обязательное поле"
+    (onSelectTag)="onSetTag($event)"
+  />
+  <!-- <custom-select title="Стек статьи" [values]="techologies" formControlName="stack" /> -->
+  <app-markdown-textarea formControlName="text" title="Текст статьи/заметки:"/>
+  <button [disabled]="!articleForm.valid" class="primary" (click)="onSubmit()">
+    Создать
+  </button>
+</form>

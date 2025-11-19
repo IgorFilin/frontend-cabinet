@@ -1,0 +1,25 @@
+@use '../styles/mixins.scss' as *;
+.app {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  justify-content: flex-start;
+  height: 90vh;
+  overflow: auto;
+  box-sizing: border-box;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  router-outlet {
+    display: none;
+  }
+
+  &.popupOpened {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+}

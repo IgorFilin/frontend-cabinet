@@ -1,0 +1,14 @@
+<div class="ng-sectionList">
+  <ng-container *ngFor="let list of sectionLists()">
+    <div
+      class="ng-sectionList__list"
+      [ngClass]="{ disabled: list.disabled }"
+      [routerLink]="list.routeLink"
+      [routerLinkActive]="'active'"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <cabinet-icon [id]="list.icon" />
+      <div>{{ list.title }}</div>
+    </div>
+  </ng-container>
+</div>

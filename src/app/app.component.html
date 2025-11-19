@@ -1,0 +1,12 @@
+<cabinet-header />
+<div
+  class="app"
+  [class.popupOpened]="isOpenedPopup()"
+>
+  <cabinet-section-list
+    *ngIf="isOpenMenu"
+    @slideInOut
+  />
+  <router-outlet />
+</div>
+<ng-container #popupContainer></ng-container>

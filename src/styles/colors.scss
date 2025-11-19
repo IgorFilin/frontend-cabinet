@@ -1,0 +1,29 @@
+html[data-theme="light"] {
+  --bg-global: #ffffff;
+  --bg-color: #e2e2e2;
+  --text-color: black;
+  --primary-color: rgb(85, 85, 85);
+  --secondary-color: rgba(148, 148, 148, 0.758);
+  --accent-color: rgb(125, 74, 74);
+  --error-color: tomato;
+  --success-color: green;
+  --info-color: lightblue;
+  --disabled-color: gray;
+  --warning-color: orange;
+  --tags-color: #004080;
+}
+
+html[data-theme="dark"] {
+  --bg-global: #170a1f;
+  --bg-color: #333349;
+  --text-color: #8cd9cd;
+  --primary-color: rgb(27, 37, 37);
+  --secondary-color: #1f5a5c;
+  --accent-color: rgb(245, 245, 245);
+  --error-color: crimson;
+  --success-color: lime;
+  --info-color: rgb(77, 78, 79);
+  --disabled-color: dimgray;
+  --warning-color: brown;
+  --tags-color: #60a1e1;
+}

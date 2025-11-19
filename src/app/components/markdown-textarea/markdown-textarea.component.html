@@ -1,0 +1,119 @@
+<div class="ng-markdownTextarea__textareaBlock">
+  @if (title) {
+    <label class="ng-markdownTextarea__textareaLabel" [for]="control.name" >
+      {{ title }}
+    </label>
+  }
+  <div class="ng-markdownTextarea__textareaContainer">
+    @if (!isPreWatch) {
+      <textarea
+        (mouseup)="setSelectedText($event)"
+        (input)="onTextareaChange($event)"
+        (blur)="setSelectedText($event)"
+        cdkTextareaAutosize
+        [cdkAutosizeMinRows]="cdkMinHeight"
+        [cdkAutosizeMaxRows]="cdkMaxHeight"
+        [value]="value"
+        [id]="control.name"
+        class="ng-markdownTextarea__textarea"></textarea>
+    } @else {
+      <div class="ng-markdownTextarea__textareaMarkdownPreWatch">
+        <markdown
+          lineHighlight
+          [data]="value" />
+      </div>
+    }
+      <div
+        (click)="onPreWatchHandler()"
+        class="ng-markdownTextarea__preWatchTextarea">
+        {{ !isPreWatch ? "Предв. просмотр" : "Ввод текста"}}
+      </div>
+  </div>
+  @if(!isPreWatch) {
+  <div class="ng-markdownTextarea__codebuttonContainer" @bubble>
+    <div
+      class="ng-markdownTextarea__transformCodebutton"
+      (click)="onChangeModeHandler()">
+      {{
+        codeFormsToggle ? "Текст" : "Режим разметки"
+      }}
+    </div>
+      <div class="ng-markdownTextarea__markdownContainer">
+        @if (codeFormsToggle) {
+          <div @bubble title="Код в текст">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.CODE)"
+              [id]="'code'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Блок кода">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.BLOCK_CODE)"
+              [id]="'code-block'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Линия между блоками">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.LINE)"
+              [id]="'line'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Зачеркнуть текст">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.SLASH)"
+              [id]="'text-slash'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Заголовок">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.SIZE_UP)"
+              [id]="'font-size'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Курсик">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.ITALIC)"
+              [id]="'letter-italic'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Курсик">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.UNDER)"
+              [id]="'letter-under'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Курсик">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.LINK)"
+              [id]="'link'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+          <div @bubble title="Курсик">
+            <cabinet-icon
+              (iconClick)="onTransformTest(transformTextEnum.IMAGE)"
+              [id]="'image'"
+              [color]="'white'"
+            >
+            </cabinet-icon>
+          </div>
+        }
+      </div>
+  </div>
+  }
+</div>

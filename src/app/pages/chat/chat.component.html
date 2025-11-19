@@ -1,0 +1,40 @@
+<div class="chat">
+  <div
+    class="chat__messageBlock"
+    #messageBlock
+  >
+    @if(isLoadingConnected()) {
+    <div class="chat__messageBlock loader-text"></div>
+    } @else if(!isConnected() && !isLoadingConnected()) {
+    <section class="chat_error">
+      <div class="chat_errorImage">
+        <h1 class="chat_errorText">На данный момент чат не доступен</h1>
+      </div>
+    </section>
+    } @else { @for(message of messages(); track $index) {
+    <div class="chat__message">
+      <div>{{ message.Name }}</div>
+      <div>{{ message.Message.Text }}</div>
+    </div>
+    } }
+  </div>
+  <div class="chat__usersTyping">
+    @for(typingUser of typingUsers() ; track $index) {
+    <div class="chat__userTyping">{{ typingUser.Name }} печатает</div>
+    }
+  </div>
+  <textarea
+    class="chat__textarea"
+    name="message"
+    id="message"
+    [formControl]="message"
+  ></textarea>
+
+  <button
+    class="primary"
+    [disabled]="!message.value"
+    (click)="sendMessage()"
+  >
+    Send Message
+  </button>
+</div>

@@ -1,0 +1,52 @@
+<div class="knowledgeBase">
+  @for (article of dataPaginationArticles | textSlice : 'description' : 190; track article.id) {
+  <div class="knowledgeBase__article">
+    <div class="knowledgeBase__title">
+      <markdown
+        lineHighlight
+        [data]="article.title"
+      />
+    </div>
+    <hr />
+    <div class="knowledgeBase__info">
+      <div class="knowledgeBase__titleDate">{{ article?.date | date : 'dd MMMM yyyy в HH:mm' }}</div>
+      <span>&middot;</span>
+      <div class="knowledgeBase__views">
+        <div class="knowledgeBase__viewsIconContainer">
+          <cabinet-icon id="eye" />
+        </div>
+        <div class="knowledgeBase__viewsCount">{{ article?.views?.length }}</div>
+      </div>
+    </div>
+    <div class="knowledgeBase__tags">
+      @for(tag of article.tags; track tag) {
+      <div class="knowledgeBase__tag">#{{ tag.title }}</div>
+      }
+    </div>
+    <markdown
+      class="knowledgeBase__markdown"
+      lineHighlight
+      [data]="article.description"
+    />
+    <div class="knowledgeBase__configContainer">
+      <button
+        [routerLink]="['/article', article.id]"
+        class="secondary"
+      >
+        Читать
+      </button>
+    </div>
+  </div>
+  }
+  <div class="knowledgeBase__pagination">
+    @for(page of pagination; track $index) {
+    <div
+      class="knowledgeBase__page paginationBtn"
+      (click)="setPage($index + 1)"
+      [ngClass]="{ active: currentPage() === $index + 1 }"
+    >
+      {{ page }}
+    </div>
+    }
+  </div>
+</div>

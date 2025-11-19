@@ -1,0 +1,86 @@
+.buttonLink {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--color-info);
+  cursor: pointer;
+  text-decoration: unset;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.primary {
+  padding: 10px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--secondary-color); 
+  }
+}
+
+.secondary {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #51639e, #1b6cdd);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: var(--bg-color);
+    cursor: pointer;
+    outline: 0;
+    overflow: hidden;
+    padding: 5px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
+    white-space: nowrap;
+    width: fit-content;
+    height: fit-content;
+    z-index: 9;
+    border: 0;
+  
+  &:hover {
+    background: #7970dc;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+/* CSS */
+.paginationBtn {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+  }
+}

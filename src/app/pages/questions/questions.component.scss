@@ -1,0 +1,90 @@
+@use "colors.scss" as *;
+
+:host {
+  width: 100%;
+}
+
+.ng-questions {
+  width: 97%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.ng-questions__infoText {
+  margin: 10px 0 20px 0;
+}
+
+.ng-questions__textareaLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: bold;
+  overflow: auto;
+}
+
+.ng-questions__variantsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.ng-questions__variants {
+  display: flex;
+  gap: 10px;
+}
+
+.ng-questions__variantAnswersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ng-questions__buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ng-questions__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  padding: 10px;
+  background: var(--color-dark-gray);
+  color: var(--color-light-gray);
+  transition: 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  &:disabled {
+    background: var(--color-disabled);
+  }
+
+  &.addOuestion {
+    grid-area: addOuestion;
+  }
+
+  &.removeQuestion {
+    grid-area: removeQuestion;
+  }
+
+  &.submit {
+    grid-area: submit;
+  }
+}
+
+.ng-questions__answerContainer {
+  display: flex;
+  gap: 10px;
+  --textarea-max-width: 300px;
+  --textarea-max-height: 200px;
+}
+
+

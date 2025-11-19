@@ -1,0 +1,9 @@
+::ng-deep {
+  .xterm {
+    padding: 10px;
+    .xterm-viewport {
+      overflow-y: hidden;
+    }
+  }
+  
+}

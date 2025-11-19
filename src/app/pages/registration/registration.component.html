@@ -1,0 +1,31 @@
+<div class="ng-registration" @bubble>
+  <form
+    (ngSubmit)="onSubmit()"
+    class="ng-registrationForm"
+    [formGroup]="registrationForm"
+  >
+  <div class="ng-registration__title">Регистрация</div>
+    <app-input
+      placeholder="имя"
+      errorMessage="Не корректное имя"
+      formControlName="name"
+    />
+    <app-input
+      placeholder="почта"
+      errorMessage="Не корректный email"
+      formControlName="email"
+    />
+    <app-input
+      placeholder="пароль"
+      errorMessage="Не корректный пароль"
+      formControlName="password"
+    />
+    <div class="ng-registrationForm__loginRouteContainer">
+      <div>У вас уже есть аккаунт?</div>
+      <a routerLink="/login" class="buttonLink"> Войти </a>
+    </div>
+    <button class="primary" type="submit" [disabled]="registrationForm.invalid">
+      Регистрация
+    </button>
+  </form>
+</div>

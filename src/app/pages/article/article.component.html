@@ -1,0 +1,78 @@
+<form
+  class="article"
+  [formGroup]="editedArticleForm"
+>
+  <div class="article_titleContainer">
+    @if(isEditMode()) {
+    <app-input
+      placeholder="Заголовок статьи"
+      formControlName="title"
+      errorMessage="Обязательное поле"
+    />
+    } @else {
+    <span class="article_title">{{ article()?.title }}</span>
+    }
+    <span class="article_titleDate">
+      Создал
+      <i>{{ article()?.user?.name }}</i>
+      {{ article()?.date | date : 'dd MMMM yyyy' }}
+    </span>
+    <div class="article_views">
+      <div class="article_viewsIconContainer">
+        <cabinet-icon id="eye" />
+      </div>
+      <div class="article_viewsCount">{{ article()?.views?.length }}</div>
+    </div>
+    @if (isYourArticle() && !isEditMode()) {
+    <div class="article_actionsButtons">
+      <button
+        (click)="isEditMode.set(true)"
+        class="article_editButton secondary"
+      >
+        Редактировать
+      </button>
+      <div class="article_removeIconContainer">
+        <cabinet-icon
+          (iconClick)="deleteArticleOpenPopup()"
+          id="trash"
+          class=""
+        />
+      </div>
+    </div>
+    } @if (isEditMode()) {
+    <div class="article_editButtons">
+      <button
+        (click)="isEditMode.set(false); this.setInitialDataArticle()"
+        class="article_editButton secondary"
+      >
+        Назад
+      </button>
+      <button
+        (click)="onSaveArticleHandler()"
+        [disabled]="!editedArticleForm.valid"
+        class="article_editButton secondary"
+      >
+        Сохранить
+      </button>
+    </div>
+    }
+  </div>
+  <div class="article__tags">
+    @for(tag of article()?.tags; track $index){
+    <div class="article__tag">{{ tag.title }}</div>
+    }
+  </div>
+  <div class="article_description">
+    @if(isEditMode()) {
+    <app-markdown-textarea
+      formControlName="description"
+      title="Отредактируйте текст статьи:"
+    />
+    } @else {
+    <markdown
+      lineHighlight
+      [data]="article()?.description"
+    />
+    }
+  </div>
+</form>

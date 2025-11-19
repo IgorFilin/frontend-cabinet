@@ -1,0 +1,55 @@
+@use 'colors.scss' as *;
+
+* {
+  font-family: 'Oswald', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-global);
+  overflow: hidden;
+}
+.container {
+  width: auto;
+  max-width: 1200px;
+  margin: 15px auto;
+  padding: 0 10px;
+}
+markdown {
+  code[class*='language-'] {
+    white-space: pre-wrap;
+  }
+
+  pre[class*='language-'] {
+    max-width: fit-content;
+  }
+
+  p {
+    margin: 5px;
+    word-break: break-all;
+  }
+
+  img {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  code {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  ul {
+    margin: 0;
+  }
+}

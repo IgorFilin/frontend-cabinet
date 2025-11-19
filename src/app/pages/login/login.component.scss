@@ -1,0 +1,35 @@
+@use "colors.scss" as *;
+
+:host {
+  flex: 1;
+}
+
+.ng-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  .ng-loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    max-width: 250px;
+  }
+
+  .ng-loginForm__regRouteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .ng-login__title {
+    font-size: 16px;
+  }
+}

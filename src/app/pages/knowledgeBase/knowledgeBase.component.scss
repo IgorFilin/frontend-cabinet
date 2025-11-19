@@ -1,0 +1,111 @@
+@use "../../../styles/colors.scss" as *;
+:host {
+  width: 100%;
+}
+
+.knowledgeBase {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: --webkit-fill-available;
+}
+
+.knowledgeBase__article {
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  width: --webkit-fill-available;
+  padding: 7px;
+  overflow: hidden;
+  max-height: 215px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+  &:hover {
+    transition: 0.5s;
+    transform: scale(1.01);
+  }
+}
+
+.knowledgeBase__title {
+  font-size: 18px;
+}
+
+.knowledgeBase__techlogyTags {
+  display: flex;
+  gap: 10px;
+}
+
+.knowledgeBase__techlogy {
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 2px solid;
+  }
+}
+
+.knowledgeBase__description {
+  background-color: #f5f5f5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: "monospace";
+  line-height: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.knowledgeBase__tags {
+  display: flex;
+  gap: 10px;
+}
+
+.knowledgeBase__tag {
+  font-size: 16px;
+  color: var(--tags-color);
+  line-height: 1.5;
+  padding: 0 5px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+}
+
+.knowledgeBase__configContainer {
+  border-top: 2px solid var(--primary-color);
+  margin-top: 10px;
+  padding-top: 10px;
+  height: 30px;
+}
+
+.knowledgeBase__markdown {
+  max-height: 30px;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.knowledgeBase__info {
+  margin-bottom: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.knowledgeBase__views {
+  display: flex;
+  gap: 6px;
+}
+
+.knowledgeBase__viewsIconContainer {
+  width: fit-content;
+}
+
+.knowledgeBase__pagination {
+  display: flex;
+  gap: 15px;
+}
+
+.knowledgeBase__page {
+  font-size: 15px;
+  cursor: pointer;
+
+  &.active {
+    color: var(--success-color);
+  }
+}

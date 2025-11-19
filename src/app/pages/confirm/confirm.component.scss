@@ -1,0 +1,36 @@
+@use "colors.scss" as *;
+
+:host {
+  flex: 1;
+}
+
+.ng-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  .ng-confirmForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    width: fit-content;
+    max-width: 250px;
+    width: 100%;
+  }
+
+  .ng-confirmForm__loginRouteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ng-confirm__title {
+    font-size: 16px;
+  }
+}

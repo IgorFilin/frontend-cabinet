@@ -1,0 +1,122 @@
+@use 'colors.scss' as *;
+
+.customCheckbox {
+  --borderColor: var(--text-color);
+  --borderWidth: 3px;
+}
+
+.customCheckbox label {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.customCheckbox input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  background: var(--secondary-color);
+  font-size: 1.8em;
+  border-radius: 0.125em;
+  display: inline-block;
+  border: var(--borderWidth) solid var(--borderColor);
+  width: 1em;
+  height: 1em;
+  position: relative;
+}
+.customCheckbox input[type='checkbox']:before,
+.customCheckbox input[type='checkbox']:after {
+  content: '';
+  position: absolute;
+  background: var(--borderColor);
+  width: calc(var(--borderWidth) * 3);
+  height: var(--borderWidth);
+  top: 50%;
+  left: 10%;
+  transform-origin: left center;
+}
+.customCheckbox input[type='checkbox']:before {
+  transform: rotate(45deg) translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2)) scaleX(0);
+  transition: transform 200ms ease-in 200ms;
+}
+.customCheckbox input[type='checkbox']:after {
+  width: calc(var(--borderWidth) * 5);
+  transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms ease-in;
+}
+.customCheckbox input[type='checkbox']:checked:before {
+  transform: rotate(45deg) translate(calc(var(--borderWidth) / -2), calc(var(--borderWidth) / -2)) scaleX(1);
+  transition: transform 200ms ease-in;
+}
+.customCheckbox input[type='checkbox']:checked:after {
+  width: calc(var(--borderWidth) * 5);
+  transform: rotate(-45deg) translateY(calc(var(--borderWidth) * 2)) scaleX(1);
+  transition: transform 200ms ease-out 200ms;
+}
+
+.customTextarea {
+  z-index: 1;
+  width: 100%;
+  border: 1px solid var(--color-medium-gray);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 17px;
+  padding: 10px;
+  resize: none;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  max-width: var(--textarea-max-width);
+  max-height: var(--textarea-max-height);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ng-input {
+  position: relative;
+
+  input {
+    width: -webkit-fill-available;
+    padding: var(--input_padding, 10px);
+    border: 1px solid var(--info-color);
+    background-color: var(--bg-global);
+    border-radius: 4px;
+    font-size: var(--input_size, 16px);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+    + label {
+      content: '';
+      position: absolute;
+      top: var(--input_labelTop, 12px);
+      left: 10px;
+      z-index: 10;
+      font-size: 14px;
+      transition: all 0.2s ease-in-out;
+      pointer-events: none;
+      max-height: 14px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:focus + label,
+    &:not(:placeholder-shown) + label {
+      top: -12px;
+      left: 10px;
+      z-index: 10;
+      background-color: var(--bg-color);
+      font-size: 12px;
+      transition: all 0.2s ease-in-out;
+      padding: var(--input_labelPadding, 3px);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+:host {
+  width: 100%;
+}
+
+.create-article {
+  margin-top: 10px;
+  --select-width: 100%;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.create-article__addedTags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-article__tag {
+  font-size: 14px;
+  background-color: var(--info-color);
+  border-radius: 15px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.create-article__tagTitle {
+  position: relative;
+  top: -2px;
+}
+
+.create-article__noAddedTag {
+  font-size: 14px;
+  border-bottom: 2px solid var(--text-color);
+}

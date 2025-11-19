@@ -1,0 +1,61 @@
+<div class="ng-header">
+  <div class="ng-headerContainer">
+    <div class="ng-header__icons">
+      @if (isAuth) {
+      <cabinet-icon
+        (iconClick)="onIconHomeClickHandler()"
+        [id]="'home'"
+        [color]="'white'"
+      />
+      }
+      <label class="toggle">
+        <input
+          [checked]="checked"
+          (input)="onCheckHandler($event)"
+          id="toggle"
+          type="checkbox"
+        />
+        <span
+          for="toggle"
+          class="toggle__radius"
+        ></span>
+      </label>
+    </div>
+    @if (isAuth) { @if(currentRoute === '/knowledgeBase') {
+    <div class="ng-header__searchInputContainer">
+      <app-search-input
+        class="ng-header__input"
+        placeholder="Поиск статьи"
+        errorMessage="Обязательное поле"
+        [isIcon]="false"
+        [searchedRequest]="onSearchArticles"
+      />
+      @if(searchedArticles.length) {
+      <div class="ng-header__searchedArticles">
+        @for(article of searchedArticles; track $index) {
+        <div
+          class="ng-header__searchedArticle"
+          (click)="onOpenArticle(article.id)"
+        >
+          <div class="ng-header__searchedTitle">{{ article.title }}</div>
+          <div class="ng-header__tags">
+            @for(tag of article.tags; track $index) {
+            <div class="ng-header__tag">#{{ tag.title }}</div>
+            }
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+    }
+    <div class="ng-header__userInfoContainer">
+      {{ userName() }}
+      <cabinet-icon
+        id="exit"
+        (iconClick)="onClickLeaveHandler()"
+      ></cabinet-icon>
+    </div>
+    }
+  </div>
+</div>

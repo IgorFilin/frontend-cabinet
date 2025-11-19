@@ -1,0 +1,132 @@
+.ng-markdownTextarea__textareaContainer {
+    position: relative;
+    z-index: 1;
+  
+    textarea {
+      &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: rgb(51, 51, 51);
+        min-height: 24px;
+        border: 3px solid rgb(245, 245, 245);
+      }
+  
+      &::-webkit-scrollbar {
+        width: 0.9rem;
+      }
+    }
+  }
+  
+  .ng-markdownTextarea__preWatchTextarea {
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    content: "";
+    top: -25px;
+    right: 5px;
+    font-size: 12px;
+    color: var(--text-color);
+    padding: 2px 5px;
+    background-color: var(--info-color);
+    border: 1px solid var(--text-color);
+    border-radius: 2px;
+    z-index: 10;
+  }
+  
+  .ng-markdownTextarea__transformCodebutton {
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-color);
+    padding: 2px;
+    background-color: var(--color-info);
+    border: 1px solid var(--text-color);
+    border-radius: 2px;
+    width: fit-content;
+    font-family: "Roboto";
+  }
+  
+  .ng-markdownTextarea__textareaMarkdownPreWatch {
+    width: 100%;
+    border: 1px solid var(--color-medium-gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 17px;
+    padding: 8px;
+    line-height: 21px;
+    resize: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 120px;
+    margin-bottom: 4px;
+    font-family: 'Roboto';
+    word-break: break-all;
+    max-height: 509px;
+    overflow-y: scroll;
+  
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      background-color: rgb(51, 51, 51);
+      min-height: 24px;
+      border: 3px solid rgb(245, 245, 245);
+    }
+  
+    &::-webkit-scrollbar {
+      width: 0.9rem;
+    }
+  }
+
+  .ng-markdownTextarea__textareaLabel {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: bold;
+    overflow: auto;
+    max-width: calc(100% - 95px);
+  }
+  
+  .ng-markdownTextarea__textarea {
+    z-index: 1;
+    width: 100%;
+    border: 1px solid var(--color-medium-gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 17px;
+    line-height: 21px;
+    padding: 8px;
+    resize: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  
+    &:focus {
+      border-color: var(--color-info);
+      outline: none;
+      box-shadow: 0 0 8px var(--color-info)-light;
+    }
+  
+    &.variantAnswer {
+      max-width: 200px;
+      max-height: 100px;
+    }
+  }
+
+  .ng-markdownTextarea__codebuttonContainer {
+    width: -webkit-fill-available;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border: 1px solid black;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    top: -4px;
+    position: relative;
+  }
+
+  .ng-markdownTextarea__markdownContainer {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }

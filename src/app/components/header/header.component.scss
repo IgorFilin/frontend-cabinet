@@ -1,0 +1,169 @@
+@use 'colors.scss' as *;
+
+.ng-header {
+  padding: 10px;
+  box-shadow: 0 4px 8px var(--info-color);
+  background: var(--primary-color);
+
+  .ng-headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    gap: 20px;
+    border-radius: 5px;
+  }
+
+  .ng-header__button {
+    background: var(--color-white);
+    border: unset;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      color: var(--color-dark-gray);
+    }
+
+    &:active {
+      box-shadow: 0 2px 4px var(--color-gray);
+      transform: translateY(0);
+    }
+  }
+}
+
+.ng-header__icons {
+  display: flex;
+  gap: 15px;
+}
+
+.toggle {
+  width: 37px;
+  height: 22px;
+  background-color: var(--bg-color);
+  position: relative;
+  cursor: pointer;
+  border-radius: 14px;
+  margin-right: auto;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked {
+      + .toggle__radius {
+        transform: translateX(12px);
+      }
+    }
+  }
+
+  .toggle__radius {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    top: 1px;
+    left: 2px;
+    right: auto;
+    bottom: auto;
+    background-color: var(--text-color);
+    -webkit-transition: 0.4s;
+    transition: 0.6s;
+    border-radius: 10px;
+  }
+}
+
+.ng-header__searchInputContainer {
+  max-width: 600px;
+  width: calc(100% - 180px);
+  position: relative;
+}
+
+.ng-header__searchedArticles {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--info-color);
+  z-index: 50;
+  max-height: 500px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 14px;
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgb(51, 51, 51);
+    min-height: 24px;
+    border: 3px solid rgb(245, 245, 245);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.9rem;
+  }
+}
+
+.ng-header__searchedArticle {
+  padding: 10px;
+  margin: 1px;
+  cursor: pointer;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    .ng-header__searchedTitle {
+      color: var(--accent-color);
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: 2px solid var(--tags-color);
+  }
+}
+
+.ng-header__searchedTitle {
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  max-width: calc(600px - 10%);
+}
+
+.ng-header__tags {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.ng-header__tag {
+  font-size: 16px;
+  color: var(--tags-color);
+  line-height: 1.5;
+  padding: 0 5px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+}
+
+.ng-header__input {
+  --input_padding: 5px;
+  --input_size: 14px;
+  --input_labelTop: 8px;
+  --loader__width: 20px;
+  --b: 2px;
+  --input_labelPadding: 2px;
+}
+
+.ng-header__userInfoContainer {
+  display: flex;
+  gap: 10px;
+}

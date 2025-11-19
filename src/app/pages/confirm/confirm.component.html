@@ -1,0 +1,21 @@
+<div class="ng-confirm" @bubble>
+  <form
+    (ngSubmit)="onSubmit()"
+    class="ng-confirmForm"
+    [formGroup]="confirmForm"
+  >
+   <div class="ng-confirm__title">Подтверждение аккаунта</div>
+    <app-input
+      placeholder="ключ"
+      errorMessage="Не корректный ключ"
+      formControlName="key"
+    />
+    <div class="ng-confirmForm__loginRouteContainer">
+      <div>У вас уже есть аккаунт?</div>
+      <a routerLink="/login" class="buttonLink"> Войти </a>
+    </div>
+    <button class="primary" type="submit" [disabled]="confirmForm.invalid">
+      Подтвердить
+    </button>
+  </form>
+</div>

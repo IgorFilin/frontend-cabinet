@@ -1,0 +1,16 @@
+<div class="ng-radioButton">
+  <ng-container *ngFor="let option of options">
+    <label>
+      <input
+        class="ng-radioButton__input"
+        type="radio"
+        (change)="onChangeHandler($event)"
+        [value]="option.value"
+        [checked]="option.value === customValue"
+        [name]="name"
+      />
+      <div class="ng-radioButton__custom"></div>
+      <span *ngIf="option.label">{{ option.label }}</span>
+    </label>
+  </ng-container>
+</div>

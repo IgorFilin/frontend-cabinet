@@ -17,7 +17,7 @@ test:
   tags:
     - docker
   script: 
-    - ng test --no-watch --no-progress --browsers=ChromeHeadless
+    - npx ng test --no-watch --no-progress --browsers=ChromeHeadless
   artifacts:
     reports:
       junit: test-results.xml

@@ -2,7 +2,7 @@ stages:
   - test
   - deploy
 
-image: node:20
+image: browserless/chrome:node-20
 
 cache:
   key: "$CI_COMMIT_REF_SLUG"
@@ -17,7 +17,7 @@ test:
   tags:
     - docker
   script: 
-    - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    - npm run test -- --no-watch --no-progress
   artifacts:
     reports:
       junit: test-results.xml

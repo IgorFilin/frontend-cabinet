@@ -2,7 +2,7 @@ stages:
   - test
   - deploy
 
-image: browserless/chrome:node-20
+image: browserless/chrome:1-chrome-stable
 
 cache:
   key: "$CI_COMMIT_REF_SLUG"

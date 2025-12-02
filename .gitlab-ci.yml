@@ -2,9 +2,23 @@ stages:
   - test
   - deploy
 
+image: node:20
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
 test:
   stage: test
   tags:
     - docker
   script: 
     - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  artifacts:
+    reports:
+      junit: test-results.xml
+    expire_in: 1 week

@@ -21,6 +21,4 @@ test:
   artifacts:
     paths:
       - coverage/
-    reports:
-      junit: test-results.xml
     expire_in: 1 week

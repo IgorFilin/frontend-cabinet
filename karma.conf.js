@@ -11,11 +11,7 @@ module.exports = function (config) {
     client: {
       jasmine: {
         random: false
-      },
-      clearContext: false
-    },
-    jasmineHtmlReporter: {
-      suppressAll: true
+      }
     },
     reporters: ['progress', 'junit'],
     junitReporter: {
@@ -23,14 +19,7 @@ module.exports = function (config) {
       outputFile: 'test-results.xml',
       useBrowserName: false
     },
-    customLaunchers: {
-      ChromeHeadlessCI: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--disable-gpu', '--remote-debugging-port=9222']
-      }
-    },
-    browsers: ['ChromeHeadlessCI'],
-    singleRun: true,
-    restartOnFileChange: false
+    browsers: ['ChromeHeadless'],
+    singleRun: true
   });
 };

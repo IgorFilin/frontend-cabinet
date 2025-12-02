@@ -2,6 +2,7 @@ module.exports = function (config) {
   config.set({
     plugins: [
       require('karma-jasmine'),
+      require('karma-coverage'),
       require('karma-chrome-launcher'),
       require('karma-junit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -24,7 +25,6 @@ module.exports = function (config) {
       dir: 'coverage/',
       reporters: [
         { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'lcov' }
       ]
     },
     singleRun: true,

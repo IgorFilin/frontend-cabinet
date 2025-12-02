@@ -14,10 +14,18 @@ module.exports = function (config) {
         flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
       }
     },
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'junit', 'coverage'],
     junitReporter: {
       outputFile: 'test-results.xml',
+      useBrowserName: false,
       sendToStdout: false
+    },
+    coverageReporter: {
+      dir: 'coverage/',
+      reporters: [
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'lcov' }
+      ]
     },
     singleRun: true,
     autoWatch: false,

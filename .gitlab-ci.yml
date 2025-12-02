@@ -19,6 +19,8 @@ test:
   script: 
     - npx ng test --no-watch --no-progress --browsers=ChromeHeadlessCI
   artifacts:
+    paths:
+      - coverage/
     reports:
       junit: test-results.xml
     expire_in: 1 week

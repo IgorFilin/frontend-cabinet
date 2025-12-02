@@ -1,11 +1,17 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { KnowledgeService } from './knowledge.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('Service: Knowledge', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+       imports: [
+        HttpClientTestingModule,
+        ToastrModule.forRoot()
+       ],
       providers: [KnowledgeService]
     });
   });

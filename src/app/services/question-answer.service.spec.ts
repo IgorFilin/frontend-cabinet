@@ -1,12 +1,15 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { QuestionAnswerService } from './question-answer.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
 
-describe('Service: QuestionAnswer', () => {
+describe('QuestionAnswer', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [QuestionAnswerService]
+      providers: [QuestionAnswerService],
+      imports: [HttpClientTestingModule,  ToastrModule.forRoot() ]
     });
   });
 

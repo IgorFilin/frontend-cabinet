@@ -1,20 +1,16 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomSelectComponent } from './custom-select.component';
 
 describe('CustomSelectComponent', () => {
   let component: CustomSelectComponent;
   let fixture: ComponentFixture<CustomSelectComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CustomSelectComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [CustomSelectComponent] // ← заменено declarations → imports
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CustomSelectComponent);
@@ -23,6 +19,6 @@ describe('CustomSelectComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy(); // ← исправлена опечатка
   });
 });

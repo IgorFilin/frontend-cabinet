@@ -1,28 +1,24 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RadioButtonCustomComponent } from './radio-button-custom.component';
 
-import { CheckBoxCustomComponent } from './check-box-custom.component';
+describe('RadioButtonCustomComponent', () => {
+  let component: RadioButtonCustomComponent;
+  let fixture: ComponentFixture<RadioButtonCustomComponent>;
 
-describe('CheckBoxCustomComponent', () => {
-  let component: CheckBoxCustomComponent;
-  let fixture: ComponentFixture<CheckBoxCustomComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CheckBoxCustomComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RadioButtonCustomComponent] // ← заменено declarations → imports
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckBoxCustomComponent);
+    fixture = TestBed.createComponent(RadioButtonCustomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy(); // ← исправлена опечатка
   });
 });

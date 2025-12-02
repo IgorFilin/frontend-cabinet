@@ -1,8 +1,8 @@
 stages:
-  - test
+  - unit-testing
   - deploy
 
-image: timbru31/node-chrome:22-slim
+image: markadams/chromium-xvfb-js:latest-onbuild
 
 cache:
   key: "$CI_COMMIT_REF_SLUG"
@@ -13,12 +13,12 @@ before_script:
   - npm ci --cache .npm --prefer-offline
 
 test:
-  stage: test
+  stage: unit-testing
   tags:
     - docker
   script: 
-    - npx ng test --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
+    - npm run test -- --no-watch --no-progress
   artifacts:
-    paths:
-      - coverage/
+    reports:
+      junit: test-results.xml
     expire_in: 1 week

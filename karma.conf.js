@@ -1,10 +1,10 @@
 module.exports = function (config) {
   config.set({
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessCI'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--disable-gpu']
+        flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
       }
     },
     singleRun: true,

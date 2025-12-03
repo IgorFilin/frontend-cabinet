@@ -1,24 +1,27 @@
 stages:
-  - unit-testing
+  - unit-test
   - deploy
 
 image: markadams/chromium-xvfb-js:latest-onbuild
 
 cache:
-  key: "$CI_COMMIT_REF_SLUG"
+  key: 
+    files: 
+      - package-lock.json
   paths:
-    - node_modules/
+    - .npm
 
 before_script:
   - npm ci --cache .npm --prefer-offline
 
-test:
-  stage: unit-testing
+unit-test:
+  stage: unit-test
   tags:
     - docker
   script: 
-    - npm run test -- --no-watch --no-progress
+    - npx ng test --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
   artifacts:
-    reports:
-      junit: test-results.xml
-    expire_in: 1 week
+    paths:
+      - coverage/
+    expire_in: 4 days
+

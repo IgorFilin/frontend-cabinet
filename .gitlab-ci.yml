@@ -2,7 +2,7 @@ stages:
   - unit-test
   - deploy
 
-image: markadams/chromium-xvfb-js:latest-onbuild
+image: timbru31/node-chrome:22-slim
 
 cache:
   key: 

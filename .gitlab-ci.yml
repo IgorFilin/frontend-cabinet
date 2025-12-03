@@ -4,6 +4,7 @@ stages:
 
 variables:
   GIT_DEPTH: "3"
+  GIT_STRATEGY: fetch
 
 image: timbru31/node-chrome:22-slim
 

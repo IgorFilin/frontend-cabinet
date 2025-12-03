@@ -4,7 +4,7 @@ stages:
 
 variables:
   GIT_DEPTH: "3"
-  GIT_STRATEGY: fetch
+  GIT_STRATEGY: clone
 
 image: timbru31/node-chrome:22-slim
 
@@ -23,10 +23,6 @@ unit-test:
   tags:
     - docker
   script:
-    - echo forTestTest
-    - mkdir /srv/gitlab-runner/builds/IgorFilin/
-    - echo $?
-    - whoami
     - npx ng test --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
   artifacts:
     paths:

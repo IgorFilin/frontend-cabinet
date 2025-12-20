@@ -35,6 +35,8 @@ push:
   cache: {}
   image: docker:cli
   script:
+    - echo $CI_REGISTRY
+    - echo $GITLAB_USER_LOGIN
     - docker login -u $GITLAB_USER_LOGIN -p $TOKEN_DOCKER_REGISTRY $CI_REGISTRY
     - docker build -t registry.gitlab.com/igorfilin/personal-cabinet:$CI_COMMIT_SHA .
     - docker push registry.gitlab.com/igorfilin/personal-cabinet:$CI_COMMIT_SHA

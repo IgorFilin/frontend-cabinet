@@ -29,3 +29,14 @@ unit-test:
       - coverage/
     expire_in: 4 days
 
+push:
+  stage: deploy
+  tags:
+    - docker
+  script:
+    - docker login registry.gitlab.com -t $TOKEN_DOCKER_REGISTRY
+    - docker build -t registry.gitlab.com/igorfilin/personal-cabinet$CI_COMMIT_SHA .
+    - docker push registry.gitlab.com/igorfilin/personal-cabinet$CI_COMMIT_SHA
+  needs:
+    - unit-test
+

@@ -22,7 +22,6 @@ unit-test:
   stage: unit-test
   tags:
     - docker
-  cache: {}
   script:
     - npx ng test --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
   artifacts:
@@ -34,6 +33,7 @@ push:
   stage: deploy
   tags:
     - docker
+  cache: {}
   image: docker:cli
   script:
     - docker login registry.gitlab.com -t $TOKEN_DOCKER_REGISTRY

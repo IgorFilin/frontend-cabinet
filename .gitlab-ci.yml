@@ -28,18 +28,21 @@ unit-test:
       - coverage/
     expire_in: 4 days
 
-push:
+build-push:
   stage: deploy
-  tags:
-    - docker
-  cache: {}
-  image: docker:cli
+  image: quay.io/buildah/stable
+  variables:
+    STORAGE_DRIVER: vfs
+    BUILDAH_FORMAT: docker
+    FQ_IMAGE_NAME: "registry.gitlab.com/igorfilin/personal-cabinet:$CI_COMMIT_SHA"
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | buildah login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
-    - docker build -t registry.gitlab.com/igorfilin/personal-cabinet:$CI_COMMIT_SHA .
-    - docker push registry.gitlab.com/igorfilin/personal-cabinet:$CI_COMMIT_SHA
+    - buildah build -t $FQ_IMAGE_NAME
+    - buildah push $FQ_IMAGE_NAME
   needs:
     - unit-test
   rules:
     - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
       when: manual
+  

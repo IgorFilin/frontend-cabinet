@@ -39,6 +39,7 @@ build-push:
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | buildah login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
+    - echo $FQ_IMAGE_NAME:$IMAGE_TAG
     - buildah build -t $FQ_IMAGE_NAME:$IMAGE_TAG
     - buildah push $FQ_IMAGE_NAME:$IMAGE_TAG
   needs:

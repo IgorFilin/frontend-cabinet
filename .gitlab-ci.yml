@@ -1,6 +1,7 @@
 stages:
   - unit-test
   - deploy
+  - rollback
 
 variables:
   GIT_DEPTH: "3"
@@ -31,6 +32,7 @@ unit-test:
 build-push:
   stage: deploy
   image: quay.io/buildah/stable
+  cache: {}
   variables:
     STORAGE_DRIVER: vfs
     BUILDAH_FORMAT: docker
@@ -47,3 +49,21 @@ build-push:
     - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
       when: manual
   
+rollback:
+  stage: rollback
+  image: igorfilin/regctl:latest
+  variables:
+    IMAGE_TAG: $CI_COMMIT_TAG
+    IMAGE_NAME: "registry.gitlab.com/igorfilin/personal-cabinet"
+  script:
+    - regctl registry login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+    - regctl tag rm $IMAGE_NAME:$IMAGE_TAG
+  needs:
+    - build-push
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/
+      when: manual
+
+
+
+

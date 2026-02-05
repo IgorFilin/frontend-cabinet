@@ -1,26 +1,23 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
-import { IArticle, IArticleResponse } from '../models/interfaces';
+import { Injectable } from '@angular/core';
 import { IEditArticleBody } from '../models/request';
 import { RequestService } from './request.service';
 import { ToasterService } from './toaster.service';
 import { Observable, of, tap } from 'rxjs';
 import { TechnologyStackType } from '../models/types';
 import { KnowledgeRepository } from '../infrastructure/repositories/knowledge.repository';
+import { HttpClient } from '@angular/common/http';
+import { IApiResponse } from '../shared/models/api.interface'
 
 @Injectable({
   providedIn: 'root',
 })
 export class KnowledgeService {
-  constructor(private requestService: RequestService, private toastService: ToasterService, private knowledgeRepository: KnowledgeRepository) {}
+  constructor(private requestService: RequestService, private toastService: ToasterService, private knowledgeRepository: KnowledgeRepository, private httpClient: HttpClient) {}
 
   createArticle(payload: any): Observable<any> {
-    return this.requestService.post<any, any>('learning/create-article', { ...payload }).pipe(
-      tap((data) => {
-        if (data.message) {
-          this.toastService.info(data.message);
-        }
-      })
-    );
+    return this.httpClient.post<IApiResponse<any>>('learning/create-article', { ...payload } , {
+      withCredentials: true,
+    });
   }
 
   getTag(filter: string) {

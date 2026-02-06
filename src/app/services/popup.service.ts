@@ -26,7 +26,6 @@ export class PopupService {
   }
 
   close() {
-    console.log('close');
     this.containerPopup.clear();
   }
 }

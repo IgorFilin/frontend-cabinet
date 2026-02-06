@@ -28,7 +28,6 @@ export class HeaderComponent {
   currentRoute: string = '';
   searchedArticles: IArticle[] = [];
   userName = computed(() => {
-    console.log('0)-00-0', this.userStore.userInfoData());
     return this.userStore.userInfoData()?.name;
   });
 

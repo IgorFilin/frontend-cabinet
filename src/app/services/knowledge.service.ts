@@ -15,13 +15,13 @@ export class KnowledgeService {
   constructor(private requestService: RequestService, private toastService: ToasterService, private knowledgeRepository: KnowledgeRepository, private httpClient: HttpClient) {}
 
   createArticle(payload: any): Observable<any> {
-    return this.httpClient.post<IApiResponse<any>>('learning/create-article', { ...payload } , {
+    return this.httpClient.post<IApiResponse<any>>('gateway/create-article', { ...payload } , {
       withCredentials: true,
     });
   }
 
   getTag(filter: string) {
-    return this.requestService.get<any, any>('learning/tags', { filter }).pipe(
+    return this.requestService.get<any, any>('gateway/tags', { filter }).pipe(
       tap((data) => {
         if (data.message) {
           this.toastService.info(data.message);

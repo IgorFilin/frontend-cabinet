@@ -14,7 +14,7 @@
     }
     <span class="article_titleDate">
       Создал
-      <i>{{ article()?.user?.name }}</i>
+      <i>{{ article()?.author?.name }}</i>
       {{ article()?.date | date : 'dd MMMM yyyy' }}
     </span>
     <div class="article_views">
@@ -23,6 +23,7 @@
       </div>
       <div class="article_viewsCount">{{ article()?.views?.length }}</div>
     </div>
+    {{ isYourArticle() }}
     @if (isYourArticle() && !isEditMode()) {
     <div class="article_actionsButtons">
       <button
@@ -35,7 +36,6 @@
         <cabinet-icon
           (iconClick)="deleteArticleOpenPopup()"
           id="trash"
-          class=""
         />
       </div>
     </div>

@@ -17,6 +17,8 @@ import { PopupService } from '../../services/popup.service';
 import { RequestService } from '../../services/request.service';
 import { catchError, EMPTY, finalize } from 'rxjs';
 import { KnowledgeRepository } from '../../infrastructure/repositories/knowledge.repository';
+import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-article',
@@ -26,7 +28,9 @@ import { KnowledgeRepository } from '../../infrastructure/repositories/knowledge
   animations: [bubbleAnimation],
 })
 export class ArticleComponent implements OnInit {
-  isYourArticle: Signal<boolean> = computed(() => this.userStore.userId() === this.article()?.user?.id);
+  isYourArticle: Signal<boolean> = computed(() => {
+    return this.userStore.userId() === this.article()?.userId
+  });
   articleId: WritableSignal<string> = signal<string>('');
   article: WritableSignal<IArticleResponse | null> = signal(null);
   isEditMode: WritableSignal<boolean> = signal(false);
@@ -53,7 +57,8 @@ export class ArticleComponent implements OnInit {
     private toasterService: ToasterService,
     private popupService: PopupService,
     private requestService: RequestService,
-    private knowledgeRepository: KnowledgeRepository
+    private knowledgeRepository: KnowledgeRepository,
+    private httpClient: HttpClient
   ) {}
 
   setInitialDataArticle() {
@@ -108,10 +113,11 @@ export class ArticleComponent implements OnInit {
   }
 
   private deleteArticle() {
-    this.requestService
-      .delete<any, any>('learning/article', { id: this.articleId() })
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
+    const params = new HttpParams().set('articleId', this.articleId().toString());
+    return this.httpClient.delete<any>('gateway/delete-article', {
+      params,
+      withCredentials: true
+    }).pipe(
         finalize(() => this.popupService.close()),
         catchError(() => {
           this.toasterService.error('Произошла ошибка');
@@ -119,7 +125,8 @@ export class ArticleComponent implements OnInit {
         })
       )
       .subscribe((data) => {
-        if (data?.result) {
+        console.log('11111',data);
+        if (data?.success) {
           this.router.navigateByUrl('/knowledgeBase');
           this.toasterService.success('Статья удалена');
         } else {

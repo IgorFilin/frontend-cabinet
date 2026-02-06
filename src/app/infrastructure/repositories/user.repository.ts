@@ -11,6 +11,8 @@ export class UserRepository {
   private readonly httpClient = inject(HttpClient);
 
   me(): Observable<IApiResponse<IUserInfo>> {
-    return this.httpClient.get<IApiResponse<IUserInfo>>('gateway/me');
+    return this.httpClient.get<IApiResponse<IUserInfo>>('gateway/me', {
+      withCredentials: true
+    });
   }
 }

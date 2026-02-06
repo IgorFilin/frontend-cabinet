@@ -54,8 +54,6 @@ export class CreateArticleComponent implements CanDeactivate<void> {
   onSetTag(tag: string) {
     const tags = this.articleForm.get('tags');
 
-    console.log('tags?.value', tags?.value);
-
     if (tags?.value.length === 5) {
       this.toasterService.info('Набрано максимальное количество тегов');
       return;

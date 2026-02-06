@@ -16,10 +16,11 @@ export interface IArticleResponse {
     id: string;
     userId: string;
   }>;
-  user: {
-    id: string;
-    name: string;
-  };
+  author: {
+    id: string, 
+    name: string
+  }
+  userId: string
 }
 
 export interface AuthType {

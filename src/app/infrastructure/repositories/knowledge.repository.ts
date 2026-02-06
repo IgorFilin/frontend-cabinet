@@ -11,7 +11,9 @@ export class KnowledgeRepository {
   private readonly httpClient = inject(HttpClient);
 
   articles(): Observable<IApiResponse<IArticleResponse[]>> {
-    return this.httpClient.post<IApiResponse<IArticleResponse[]>>('gateway/articles', {});
+    return this.httpClient.post<IApiResponse<IArticleResponse[]>>('gateway/articles', {}, {
+      withCredentials: true
+    });
   }
 
   getArticle(id: string): Observable<IApiResponse<IArticleResponse>> {
